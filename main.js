@@ -1,19 +1,29 @@
-// Simple Countdown Timer
+// Simple Number Guessing Game
 
-function startCountdown(seconds) {
-    let timeLeft = seconds;
+function startGame() {
+    const secretNumber = Math.floor(Math.random() * 10) + 1;
 
-    const timer = setInterval(() => {
-        console.log(`Time left: ${timeLeft}s`);
+    let attempts = 3;
 
-        timeLeft--;
+    console.log("Guess a number between 1 and 10!");
 
-        if (timeLeft < 0) {
-            clearInterval(timer);
-            console.log("Countdown finished!");
+    while (attempts > 0) {
+        const guess = Math.floor(Math.random() * 10) + 1; // simulated guess
+
+        console.log(`You guessed: ${guess}`);
+
+        if (guess === secretNumber) {
+            console.log("Correct! You win 🎉");
+            return;
+        } else {
+            console.log("Wrong guess ❌");
         }
-    }, 1000);
+
+        attempts--;
+    }
+
+    console.log(`Game over! The number was ${secretNumber}`);
 }
 
-// Example
-startCountdown(10);
+// Start game
+startGame();
