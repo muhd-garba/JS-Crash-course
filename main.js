@@ -1,19 +1,32 @@
-// Simple Digital Clock
 
-function updateClock() {
-    const now = new Date();
-
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-
-    // Add leading zero
-    hours = String(hours).padStart(2, "0");
-    minutes = String(minutes).padStart(2, "0");
-    seconds = String(seconds).padStart(2, "0");
-
-    console.log(`${hours}:${minutes}:${seconds}`);
-}
 
 // Update every second
-setInterval(updateClock, 1000);
+setInterval(updateClock, 1000);// Simple Calculator
+
+function calculate(num1, operator, num2) {
+    switch (operator) {
+        case "+":
+            return num1 + num2;
+
+        case "-":
+            return num1 - num2;
+
+        case "*":
+            return num1 * num2;
+
+        case "/":
+            if (num2 === 0) {
+                return "Cannot divide by zero";
+            }
+            return num1 / num2;
+
+        default:
+            return "Invalid operator";
+    }
+}
+
+// Examples
+console.log(calculate(10, "+", 5)); // 15
+console.log(calculate(10, "-", 5)); // 5
+console.log(calculate(10, "*", 5)); // 50
+console.log(calculate(10, "/", 5)); // 2
