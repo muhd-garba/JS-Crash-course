@@ -1,38 +1,20 @@
-// Simple JavaScript Todo List
+// Simple Random Password Generator
 
-let todos = [];
+function generatePassword(length) {
+    const chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
-// Add a todo
-function addTodo(task) {
-    todos.push(task);
-    console.log(`Added: ${task}`);
-}
+    let password = "";
 
-// Remove a todo
-function removeTodo(index) {
-    if (index >= 0 && index < todos.length) {
-        console.log(`Removed: ${todos[index]}`);
-        todos.splice(index, 1);
-    } else {
-        console.log("Invalid index");
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars[randomIndex];
     }
+
+    return password;
 }
 
-// Show all todos
-function showTodos() {
-    console.log("Todo List:");
-    
-    todos.forEach((todo, index) => {
-        console.log(`${index + 1}. ${todo}`);
-    });
-}
+// Example
+const password = generatePassword(12);
 
-// Example usage
-addTodo("Learn JavaScript");
-addTodo("Build a project");
-
-showTodos();
-
-removeTodo(0);
-
-showTodos();
+console.log("Generated Password:", password);
