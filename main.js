@@ -1,20 +1,19 @@
-// Simple Random Password Generator
+// Simple Digital Clock
 
-function generatePassword(length) {
-    const chars =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+function updateClock() {
+    const now = new Date();
 
-    let password = "";
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
 
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        password += chars[randomIndex];
-    }
+    // Add leading zero
+    hours = String(hours).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
 
-    return password;
+    console.log(`${hours}:${minutes}:${seconds}`);
 }
 
-// Example
-const password = generatePassword(12);
-
-console.log("Generated Password:", password);
+// Update every second
+setInterval(updateClock, 1000);
