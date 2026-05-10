@@ -1,32 +1,19 @@
+// Simple Countdown Timer
 
+function startCountdown(seconds) {
+    let timeLeft = seconds;
 
-// Update every second
-setInterval(updateClock, 1000);// Simple Calculator
+    const timer = setInterval(() => {
+        console.log(`Time left: ${timeLeft}s`);
 
-function calculate(num1, operator, num2) {
-    switch (operator) {
-        case "+":
-            return num1 + num2;
+        timeLeft--;
 
-        case "-":
-            return num1 - num2;
-
-        case "*":
-            return num1 * num2;
-
-        case "/":
-            if (num2 === 0) {
-                return "Cannot divide by zero";
-            }
-            return num1 / num2;
-
-        default:
-            return "Invalid operator";
-    }
+        if (timeLeft < 0) {
+            clearInterval(timer);
+            console.log("Countdown finished!");
+        }
+    }, 1000);
 }
 
-// Examples
-console.log(calculate(10, "+", 5)); // 15
-console.log(calculate(10, "-", 5)); // 5
-console.log(calculate(10, "*", 5)); // 50
-console.log(calculate(10, "/", 5)); // 2
+// Example
+startCountdown(10);
